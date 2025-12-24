@@ -1,0 +1,335 @@
+/* =========================================
+   GLOBAL TYPE & PAGE LAYOUT
+   ========================================= */
+
+:root {
+  --font-main: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Ensure root elements fill the viewport for centering */
+html, body, #root {
+  height: 100%;
+}
+
+/* Base font for everything */
+body {
+  font-family: var(--font-main);
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Main page wrapper */
+.page {
+  padding: 100px 10px;
+}
+
+/* Content width */
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   HERO SECTION (NAME + INTRO + LINKS + PHOTO)
+   ========================================= */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  align-items: center;
+  gap: 68px;
+  padding-top: 24px;
+  max-width: 1010px;
+  /* Make the hero take up the viewport (accounting for page padding) */
+  min-height: calc(100vh - 180px);
+}
+
+/* Name / title */
+.hero__name {
+  font-family: var(--font-main);
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 0 0 6px;
+
+  display: inline-block;                 /* makes width match text */
+  border-bottom: 3px solid rgb(255, 51, 0);
+  
+  padding: 0 0 6px 0;                     /* optional: small spacing above line */
+  
+}
+
+
+
+/* Subtitle (techy feel using mono) */
+.hero__subtitle {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Hero links wrapper (email / LinkedIn / GitHub) */
+.hero__links {
+  margin-top: 18px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* =========================================
+   HERO LINKS (SLIDE-OUT TEXT ON HOVER)
+   ========================================= */
+
+/* Base styles for all hero links (LinkedIn / GitHub) */
+.heroLink {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  padding-right: 0;
+  border-bottom: none;
+  font-size: 16px;
+  color: inherit;
+  transition:
+    padding-right 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Icon wrapper */
+.heroLink__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon SVG (white icons) */
+.heroLink__icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: white;
+}
+
+/* Sliding text: hidden by default */
+.heroLink__text {
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition:
+    transform 0.35s ease,
+    opacity 0.2s ease;
+}
+
+/* Hover: reveal text + create space for it */
+.heroLink:hover {
+  padding-right: 60px;       /* space for sliding label */
+  color: #ffffff;
+}
+
+.heroLink:hover .heroLink__text {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Group wrapper: puts LinkedIn & GitHub icons directly next to each other */
+.socialIconGroup {
+  display: flex;
+  gap: 4px;                  /* very tight visual grouping */
+  align-items: center;
+}
+
+/* =========================================
+   HERO EMAIL ICON (NO SLIDE, ENVELOPE OPENS)
+   ========================================= */
+
+/* EMAIL LINK: icon only, no sliding text */
+.emailLink {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+  padding: 0;
+  color: white;
+}
+
+/* Icon container */
+.emailLink__icon {
+  width: 22px;
+  height: 22px;
+  position: relative;
+}
+
+/* Closed envelope is visible by default */
+.emailLink__icon .icon-closed {
+  opacity: 1;
+  transition: opacity 0.25s ease, transform 0.2s ease;
+}
+
+/* Open envelope starts hidden */
+.emailLink__icon .icon-open {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Hover interaction: swap icons */
+.emailLink:hover .icon-closed {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.emailLink:hover .icon-open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure email never inherits slide padding/text behavior */
+.emailLink:hover {
+  padding-right: 0 !important;
+}
+
+/* =========================================
+   HERO PHOTO
+   ========================================= */
+
+.hero__photoWrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero__photo {
+  width: 220px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+  transition: filter 0.3s ease;
+}
+
+/* Responsive adjustments for hero */
+@media (max-width: 720px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .hero__photoWrap {
+    justify-content: flex-start;
+  }
+
+  .hero__photo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero__name {
+    font-size: 40px;
+  }
+}
+
+/* =========================================
+   PROJECTS SECTION
+   ========================================= */
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 24px;
+  
+}
+
+/* Project card: straight-edged rectangle */
+.projectCard {
+  border: 3px solid #ffffff;
+  border-radius: 0;                 /* straight edges */
+  background: #0000006f;
+  padding: 20px 24px;
+  height: 400px;                    /* consistent height for all cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+  font-family: var(--font-main);    /* ensure cards use main font by default */
+}
+
+/* Hover: darker bg + accent border */
+.projectCard:hover {
+  background: #000000;
+  border-color: rgb(83, 93, 234);
+}
+
+/* Project title */
+.projectCard__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid currentColor;
+}
+
+/* Description text */
+.projectCard__desc {
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 8px 0 12px;
+  max-width: 55ch;
+}
+
+/* Tech tags container (CS feel: use mono) */
+.projectCard__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.projectCard__meta span {
+  font-family: var(--font-mono);
+}
+
+/* Individual tech pill if you want to style it later */
+.projectCard__tech {
+  border-radius: 2px;
+}
+
+/* Links inside project card (GitHub, demo, etc.) */
+.projectCard__links {
+  margin-top: 8px;
+  display: flex;
+  gap: 14px;
+}
+
+.projectCard__links a {
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  font-family: var(--font-mono);    /* also give links that CS mono feel */
+}
+
+/* Project image wrapper + image (for photo field) */
+.projectCard__imageWrap {
+  width: 95%;
+  height: 30%;
+  overflow: hidden;
+}
+
+.projectCard__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* crop nicely */
+  display: block;
+}
