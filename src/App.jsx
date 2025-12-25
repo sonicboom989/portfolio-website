@@ -150,11 +150,12 @@ export default function App() {
               <div className="socialIconGroup">
                 {/* LinkedIn */}
                 <a
-                  href="https://linkedin.com/in/luke-coffman06"
-                  className="heroLink"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+  href="https://linkedin.com/in/luke-coffman06"
+  className="heroLink linkedinLink"
+  target="_blank"
+  rel="noreferrer"
+>
+
                   <span className="heroLink__icon">
                     <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -180,11 +181,12 @@ export default function App() {
 
                 {/* GitHub */}
                 <a
-                  href="https://github.com/sonicboom989"
-                  className="heroLink"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+  href="https://github.com/sonicboom989"
+  className="heroLink githubLink"
+  target="_blank"
+  rel="noreferrer"
+>
+
                   <span className="heroLink__icon">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

@@ -93,16 +93,15 @@ body {
   display: inline-flex;
   align-items: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;          /* allow label to extend without layout changes */
   text-decoration: none;
-  padding-right: 0;
+  padding-right: 0;           /* do not reserve space */
   border-bottom: none;
   font-size: 16px;
   color: inherit;
-  transition:
-    padding-right 0.3s ease,
-    color 0.3s ease;
+  transition: color 0.3s ease;
 }
+
 
 /* Icon wrapper */
 .heroLink__icon {
@@ -118,34 +117,64 @@ body {
   height: 20px;
   stroke: white;
 }
+/* Pull GitHub left to counteract the LinkedIn hover padding */
+
+
 
 /* Sliding text: hidden by default */
 .heroLink__text {
+  position: absolute;
+  left: 26px;               /* label starts just right of icon */
+  top: 50%;
+  transform: translate(-10px, -50%);
   white-space: nowrap;
   opacity: 0;
-  transform: translateX(-100%);
-  transition:
-    transform 0.35s ease,
-    opacity 0.2s ease;
+  transition: transform 0.35s ease, opacity 0.2s ease;
+  pointer-events: none;
 }
+
+
 
 /* Hover: reveal text + create space for it */
 .heroLink:hover {
-  padding-right: 60px;       /* space for sliding label */
   color: #ffffff;
+     /* reserve space for label */
 }
 
 .heroLink:hover .heroLink__text {
-  transform: translateX(0);
+  transform: translate(0, -50%);
   opacity: 1;
 }
+
+.githubLink {
+  transition: transform 0.4s ease;
+}
+
+/* When LinkedIn is hovered, slide GitHub */
+.socialIconGroup:has(.heroLink:first-child:hover) .githubLink {
+  transform: translateX(60px);
+}
+
+
+
+
+
 
 /* Group wrapper: puts LinkedIn & GitHub icons directly next to each other */
 .socialIconGroup {
   display: flex;
-  gap: 4px;                  /* very tight visual grouping */
+  gap: 16px;
   align-items: center;
+
+  /* reserve label space once for the whole group */
+  position: relative;
+  padding-right: 120px;     /* 2 labels worth; tune as needed */
 }
+.heroLink {
+  overflow: visible;        /* not hidden */
+}
+
+
 
 /* =========================================
    HERO EMAIL ICON (NO SLIDE, ENVELOPE OPENS)
@@ -161,6 +190,8 @@ body {
   padding: 0;
   color: white;
 }
+
+
 
 /* Icon container */
 .emailLink__icon {
