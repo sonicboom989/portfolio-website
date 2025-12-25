@@ -1,16 +1,115 @@
-# React + Vite
+Absolutely — here is the **full, copy-paste ready README.md** containing everything we structured. Just drop this into a `README.md` file at the root of your GitHub repo.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# **Portfolio Website – Luke Coffman**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A personal portfolio built with **React + Vite** to showcase software projects. The design focuses on clarity, performance, and intentional layout
 
-## React Compiler
+This repo serves both as a live personal portfolio and as a demonstration of component structure, styling discipline, and frontend architecture.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🚀 **Features**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Custom React architecture
+* Responsive layout for desktop + mobile
+* Inline SVG social icons (no dependencies)
+* Hover animations:
+
+  * LinkedIn / GitHub: text slide-out reveal
+  * Email: envelope-open animation (no slide)
+
+
+  * **IBM Plex Sans** (primary UI / structure)
+  * **JetBrains Mono** (technical / terminal accents)
+* Modular project system → add projects via one object in an array
+
+---
+
+## 🛠️ **Tech Stack**
+
+| Category   | Tools                                  |
+| ---------- | -------------------------------------- |
+| Framework  | React (Vite)                           |
+| Styling    | Custom CSS (no Tailwind, no Bootstrap) |
+| Fonts      | IBM Plex Sans, JetBrains Mono          |
+| Build Tool | Vite                                   |
+| Icons      | Custom inline SVG                      |
+
+---
+
+## 📂 **Project Structure**
+
+```
+src/
+│
+├── assets/               # images, headshot, project thumbnails
+│   └── projects/         # per-project images
+│
+├── App.jsx               # hero, projects, interactive icons
+├── App.css               # full layout + component styling
+├── main.jsx              # React root
+└── index.css             # global styling + resets
+```
+
+---
+
+## 🧩 **Add a New Project**
+
+Add a new entry to the `projects` array in `App.jsx`:
+
+```js
+projects.push({
+  title: "Project Name",
+  blurb: "Short, clear description of the project’s purpose and result.",
+  tech: ["React", "FastAPI", "Python"],
+  links: [
+    { label: "GitHub", href: "https://github.com/..." },
+    { label: "Demo", href: "https://..." }
+  ],
+  photo: projectImageImport // optional
+});
+```
+
+No JSX changes needed — the UI updates automatically.
+
+---
+
+## 📦 **Local Development**
+
+```bash
+# Install dependencies
+npm install
+
+# Run in development
+npm run dev
+
+# Build for production
+npm run build
+```
+
+---
+
+## 🌐 **Live Site**
+
+> https://YOUR_DOMAIN_HERE.tch
+> (Replace this after deployment)
+
+---
+
+## 📩 **Contact**
+
+**Luke Coffman**
+Email: [lrcoffman@ku.edu](mailto:lrcoffman@ku.edu)
+LinkedIn: [https://linkedin.com/in/luke-coffman06](https://linkedin.com/in/luke-coffman06)
+GitHub: [https://github.com/sonicboom989](https://github.com/sonicboom989)
+
+If you're a recruiter or engineer reviewing this, thank you for taking the time.
+
+---
+
+## ⭐️ **Support**
+
+If you find this project helpful or well-structured, consider giving the repo a star.
+It helps visibility and signals interest to recruiters.
