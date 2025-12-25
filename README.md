@@ -1,6 +1,4 @@
-Absolutely — here is the **full, copy-paste ready README.md** containing everything we structured. Just drop this into a `README.md` file at the root of your GitHub repo.
 
----
 
 # **Portfolio Website – Luke Coffman**
 
