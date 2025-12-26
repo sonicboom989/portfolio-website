@@ -14,13 +14,6 @@ const projects = [
     ],
   },
   {
-    title: "Emotion-Tagging Journal App",
-    blurb:
-      "Summarizes entries and tags emotions to support reflection without turning journaling into a game.",
-    tech: ["Python", "NLP", "Product Design"],
-    links: [{ label: "GitHub", href: "#" }],
-  },
-  {
     title: "CS Project Portfolio Site",
     blurb:
       "This site—built with React and a custom layout—designed to be clean, non-template-looking, and recruiter-focused.",
